@@ -5,14 +5,29 @@ import { Searchbar } from 'react-native-paper';
 
 function App() {
   const [input, setInput] = useState("");
+  const [result, setResult] = useState([]);
+
+  const fetchData = async (text) => {
+    const response = await fetch(`https://fhir.imagerad.com/dummy/Patient/?given=${text}`);
+    response
+      .json()
+      .then(data=> {
+        setResult(data);
+        console.log(data);
+        console.log(result)
+      })
+      .catch((error)=> console.log(error.message))
+  };
+
   return (
     <View style={styles.container}>
       <Searchbar 
         placeholder="Search"
         onChangeText={(text)=>{
           setInput(text);
+          fetchData(text)
         }}
-        value=""
+        value={input}
       />
     </View>
   );
