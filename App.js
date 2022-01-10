@@ -2,6 +2,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React, { useState } from 'react';
 import { Searchbar } from 'react-native-paper';
+import RNPickerSelect from 'react-native-picker-select';
 
 function App() {
   const [input, setInput] = useState("");
@@ -19,8 +20,18 @@ function App() {
       .catch((error)=> console.log(error.message))
   };
 
+
   return (
     <View style={styles.container}>
+      <RNPickerSelect
+          onValueChange={(value) => console.log(value)}  
+          items={[
+              { label: 'Name', value: 'name' },
+              { label: 'Given', value: 'given' },
+              { label: 'Family', value: 'family' },
+              { label: 'National-Id', value: 'nationalid' },
+          ]}
+      />
       <Searchbar 
         placeholder="Search"
         onChangeText={(text)=>{
