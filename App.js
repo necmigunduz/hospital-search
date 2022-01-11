@@ -60,7 +60,9 @@ function App() {
         renderItem={({item}) => <Text style={styles.display}>
             <strong>Given name:</strong> {item.resource.name[0].given[0]} <br/>
             <strong>Family name:</strong> {item.resource.name[0].family} <br/>
-            <strong>Contact info:</strong> ({item.resource.telecom[1].use}) - {item.resource.telecom[1].value} 
+            <strong>Gender:</strong> {item.resource.gender} <br/>
+            <strong>Email adress:</strong> <a href={item.resource.telecom[1].value}>{item.resource.telecom[1].value}</a> <br/>
+            <strong>Phone number:</strong> {item.resource.telecom[0].value} <br/>
           </Text>}
         keyExtractor={item => item.resource.id}
       />
