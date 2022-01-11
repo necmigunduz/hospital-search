@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Searchbar } from 'react-native-paper';
 import RNPickerSelect from 'react-native-picker-select';
 
-function App() {
+function App() {  
   const [input, setInput] = useState("");
   const [results, setResults] = useState([]);
   const [query, setQuery] = useState("");
@@ -35,7 +35,10 @@ function App() {
               { label: 'Family name', value: 'family' },
               { label: 'National-Id', value: 'nationalid' },
           ]}
-          style={styles.filter} 
+          placeholder={{
+            label: 'Select a filter below:',
+            value: ''
+          }}
       />
       <Text style={styles.display}>Enter your search word below</Text>
       <Searchbar 
@@ -81,7 +84,6 @@ const styles = StyleSheet.create({
     borderRadius: '5px',
     color: 'yellow',
     backgroundColor: 'black'
-
   },
   container: {
     flex: 1,
@@ -91,11 +93,6 @@ const styles = StyleSheet.create({
   },
   display: {
     padding: '20px'
-  },
-  filter: {
-    width: '150px',
-    margin: '0 auto',
-    textAlign: 'center'
   },
   bottom: {
     padding: '10px',
