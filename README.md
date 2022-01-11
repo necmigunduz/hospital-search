@@ -2,9 +2,9 @@
 
 Hospital Search is build with React Native. This app enables users to search for patient(s) from a Hospital API. User can use four different filters to make a search (fullname, given name, family name, and national id).
 
-![screenshot](https://github.com/necmigunduz/weather-node-front/blob/master/screenshot.png)
+![screenshot](https://github.com/necmigunduz/hospital-search/blob/master/screenshot.png)
 
-Link for the backend: [here](https://github.com/necmigunduz/weather-nodejs)
+Link for the backend: [here](https://github.com/necmigunduz/hospital-search)
 
 ## Built With
 
