@@ -23,16 +23,16 @@ function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>PATIENT SEARCH CONSOLE</Text>
-      <Text style={styles.display}>Select a search filter</Text>
+      <Text style={styles.display}>Select one of the filters in the options to search for (a) patient(s).</Text>
       <RNPickerSelect
           onValueChange={(value) => {
             console.log(value)
             setQuery(value)
           }}  
           items={[
-              { label: 'Name', value: 'name' },
-              { label: 'Given', value: 'given' },
-              { label: 'Family', value: 'family' },
+              { label: 'Fullname', value: 'name' },
+              { label: 'Given name', value: 'given' },
+              { label: 'Family name', value: 'family' },
               { label: 'National-Id', value: 'nationalid' },
           ]}
           style={styles.filter}
@@ -46,6 +46,14 @@ function App() {
         }}
         value={input}
       />
+      <Text style={styles.bottom}>
+        <strong>Important note:</strong>You can also use asterisk (*) symbol during search, cases are like down below and the
+          application should satisfy these cases:
+          <br/>--- *abc --> any records that end with “abc”,
+          <br/>--- abc* --> any records that start with “abc”,
+          <br/>--- *abc* --> any records that contain “abc” in it,
+          <br/>--- abc --> any records that match with “abc” exactly.
+      </Text>
       <Text style={styles.display}><strong>Patients' List</strong></Text>
       <FlatList
         data={results}
@@ -84,6 +92,11 @@ const styles = StyleSheet.create({
   filter: {
     width: '150px',
     margin: '0 auto'
+  },
+  bottom: {
+    padding: '10px',
+    fontSize: '12px',
+    marginLeft: '20px'
   }
 });
 
