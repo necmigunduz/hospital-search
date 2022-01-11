@@ -35,7 +35,7 @@ function App() {
               { label: 'Family name', value: 'family' },
               { label: 'National-Id', value: 'nationalid' },
           ]}
-          style={styles.filter}
+          style={styles.filter} 
       />
       <Text style={styles.display}>Enter your search word below</Text>
       <Searchbar 
@@ -60,9 +60,10 @@ function App() {
         renderItem={({item}) => <Text style={styles.display}>
             <strong>Given name:</strong> {item.resource.name[0].given[0]} <br/>
             <strong>Family name:</strong> {item.resource.name[0].family} <br/>
-            <strong>Gender:</strong> {item.resource.gender} <br/>
+            <strong>Birthdate:</strong> {item.resource.birthDate.toLocaleString('tr-TR', { year: 'numeric', month: '2-digit', day: '2-digit' })} <br/>  
+            <strong>Gender:</strong> {item.resource.gender.charAt(0).toUpperCase() + item.resource.gender.slice(1)} <br/>
             <strong>Email adress:</strong> <a href={item.resource.telecom[1].value}>{item.resource.telecom[1].value}</a> <br/>
-            <strong>Phone number:</strong> {item.resource.telecom[0].value} <br/>
+            <strong>Phone number:</strong> <a href="tel:{item.resource.telecom[0].value}">{item.resource.telecom[0].value}</a> <br/>
           </Text>}
         keyExtractor={item => item.resource.id}
       />
@@ -84,16 +85,17 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'lightblue',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   display: {
     padding: '20px'
   },
   filter: {
     width: '150px',
-    margin: '0 auto'
+    margin: '0 auto',
+    textAlign: 'center'
   },
   bottom: {
     padding: '10px',
