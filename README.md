@@ -8,6 +8,7 @@ Hospital Search is build with React Native. This app enables users to search for
 
 - React Native,
 - Expo Cli,
+- NPM,
 - React Native Paper,
 - React Native Picker Select.
 
@@ -17,7 +18,7 @@ Hospital Search is build with React Native. This app enables users to search for
 - `git clone git@github.com:necmigunduz/hospital-search.git`,
 - `cd hospital-search`,
 - `export NODE_OPTIONS=--openssl-legacy-provider`,
-- `npm install`,
+- `expo install`,
 - `expo start`.
 
 ## Author
