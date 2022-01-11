@@ -7,15 +7,15 @@ import RNPickerSelect from 'react-native-picker-select';
 function App() {
   const [input, setInput] = useState("");
   const [result, setResult] = useState([]);
+  const [query, setQuery] = useState("");
 
   const fetchData = async (text) => {
-    const response = await fetch(`https://fhir.imagerad.com/dummy/Patient/?given=${text}`);
+    const response = await fetch(`https://fhir.imagerad.com/dummy/Patient/?${query}=${text}`);
     response
       .json()
       .then(data=> {
         setResult(data);
-        console.log(data);
-        console.log(result)
+        console.log(data)
       })
       .catch((error)=> console.log(error.message))
   };
@@ -24,7 +24,10 @@ function App() {
   return (
     <View style={styles.container}>
       <RNPickerSelect
-          onValueChange={(value) => console.log(value)}  
+          onValueChange={(value) => {
+            console.log(value)
+            setQuery(value)
+          }}  
           items={[
               { label: 'Name', value: 'name' },
               { label: 'Given', value: 'given' },
