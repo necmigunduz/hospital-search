@@ -4,8 +4,6 @@ Hospital Search is build with React Native. This app enables users to search for
 
 ![screenshot](https://github.com/necmigunduz/hospital-search/blob/master/screenshot.png)
 
-Link for the backend: [here](https://github.com/necmigunduz/hospital-search)
-
 ## Built With
 
 - React Native,
