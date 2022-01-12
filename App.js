@@ -1,5 +1,5 @@
 // import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList, AppRegistry } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import { Searchbar } from 'react-native-paper';
 import RNPickerSelect from 'react-native-picker-select';
@@ -108,4 +108,5 @@ const styles = StyleSheet.create({
   }
 });
 
+AppRegistry.registerComponent('Hospital-Search', () => App);
 export default App;
