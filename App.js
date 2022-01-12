@@ -59,7 +59,7 @@ function App() {
       />
       <SearchExplanation />
       <ResultHeader />
-      {!results ? (<Text style={styles.noresults}>No results found!</Text>) :       
+      {!input ? (<Text>Make an entry into searchbar...</Text>) : !results ? (<Text style={styles.noresults}>No results found!</Text>) :       
       (<FlatList
         data={results}
         renderItem={({item}) =>   
@@ -73,20 +73,15 @@ function App() {
             </Text>
         }
         keyExtractor={item => item.resource.id}
-      />)}
+      />)
+      } 
+
 
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  header: {
-    marginTop: '10px',
-    padding: '0px 50px',
-    fontSize: '25px',
-    fontWeight: '900',
-    padding: '10px'
-  },
   container: {
     flex: 1,
     border: '10px solid #5F9EA0',
@@ -94,13 +89,6 @@ const styles = StyleSheet.create({
     borderRadius: '20px',
     alignItems: 'center',
     justifyContent: 'center'
-  },
-  display: {
-    marginTop: '3px',
-    margin: '0 auto', 
-    marginBottom: '15px',
-    fontSize: '12px',
-    borderBottomWidth: '1px'
   },
   displayResult: {
     marginTop: '3px',
@@ -116,21 +104,6 @@ const styles = StyleSheet.create({
     height: '250px',
     fontWeight: '600',
     fontSize: '20px'
-  },
-  bottom: {
-    margin: '8px',
-    fontSize: '11px',
-    marginLeft: '20px'
-  },
-  logo: {
-    fontSize: '50px',
-    marginTop: '20px',
-    border: '1px solid black',
-    backgroundColor: 'black',
-    color: 'white',
-    padding: '20px',
-    borderRadius: '15px',
-    fontWeight: '900'
   }
 });
 
