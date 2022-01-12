@@ -8,6 +8,7 @@ import Logo from './Components/logo'
 import SearchText from './Components/searchText';
 import SearchExplanation from './Components/searchExplanation';
 import ResultHeader from './Components/resultHeader';
+import Header from './Components/header';
 import './style.css';
 
 function App() {  
@@ -29,7 +30,7 @@ function App() {
   return (
     <View style={styles.container}>
       <Logo />
-      <Text style={styles.header}>PATIENT SEARCH</Text>
+      <Header />
       <RNPickerSelect
           onValueChange={(value) => {
             // console.log(value)
@@ -46,6 +47,7 @@ function App() {
             value: ''
           }}
           useNativeAndroidPickerStyle={false}
+          style={{color: 'white'}}
       />
       <SearchText />
       <Searchbar 
@@ -100,10 +102,9 @@ const styles = StyleSheet.create({
   noresults: {
     marginTop: '10px',
     marginBottom: '15px',
-    fontSize: '11px',
+    fontSize: '15px',
     height: '250px',
-    fontWeight: '600',
-    fontSize: '20px'
+    fontWeight: '600'
   }
 });
 

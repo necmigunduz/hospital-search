@@ -7,11 +7,13 @@ function Header() {
 
 const styles = StyleSheet.create({
     header: {
-      marginTop: '10px',
+      marginTop: '16px',
       padding: '0px 50px',
       fontSize: '25px',
-      fontWeight: '900',
-      padding: '10px'
+      fontWeight: '500',
+      padding: '10px',
+      lineHeight:'18px',
+      textShadow: '2px 2px grey'
     }
 });
 
