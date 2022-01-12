@@ -5,6 +5,9 @@ import { Searchbar } from 'react-native-paper';
 import RNPickerSelect from 'react-native-picker-select';
 import FetchData from './Components/fetchData';
 import Logo from './Components/logo'
+import SearchText from './Components/searchText';
+import SearchExplanation from './Components/searchExplanation';
+import ResultHeader from './Components/resultHeader';
 import './style.css';
 
 function App() {  
@@ -44,7 +47,7 @@ function App() {
           }}
           useNativeAndroidPickerStyle={false}
       />
-      <Text style={styles.display}>Enter your search word below</Text>
+      <SearchText />
       <Searchbar 
         placeholder="Search"
         onChangeText={(text)=>{
@@ -54,15 +57,8 @@ function App() {
         value={input}
         style={{maxWidth: '250px', height: '30px'}}
       />
-      <Text style={styles.bottom}>
-        <strong>Important note:</strong>You can also use asterisk (*) symbol during search, cases are like down below and the
-          application should satisfy these cases:
-          <br/>--- *abc = any records that end with “abc”,
-          <br/>--- abc* = any records that start with “abc”,
-          <br/>--- *abc* = any records that contain “abc” in it,
-          <br/>--- abc = any records that match with “abc” exactly.
-      </Text>
-      <Text style={styles.display}><strong>Patients' List</strong></Text>
+      <SearchExplanation />
+      <ResultHeader />
       {!results ? (<Text style={styles.noresults}>No results found!</Text>) :       
       (<FlatList
         data={results}
