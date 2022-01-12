@@ -16,7 +16,6 @@ function App() {
       .json()
       .then(data=> {
         setResults(data.entry);
-        console.log(results)
       })
       .catch((error)=> console.log(error.message))
   };
@@ -27,7 +26,7 @@ function App() {
       <Text style={styles.header}>PATIENT SEARCH</Text>
       <RNPickerSelect
           onValueChange={(value) => {
-            console.log(value)
+            // console.log(value)
             setQuery(value)
           }}  
           items={[
@@ -41,7 +40,6 @@ function App() {
             value: ''
           }}
           useNativeAndroidPickerStyle={false}
-          style={{ inputAndroid }}
       />
       <Text style={styles.display}>Enter your search word below</Text>
       <Searchbar 
@@ -60,17 +58,20 @@ function App() {
           <br/>--- *abc* --> any records that contain “abc” in it,
           <br/>--- abc --> any records that match with “abc” exactly.
       </Text>
+      {console.log(results)}
       <Text style={styles.display}><strong>Patients' List</strong></Text>
       <FlatList
         data={results}
-        renderItem={({item}) => <Text style={styles.display}>
+        renderItem={({item}) =>   
+            <Text style={styles.display}>
             <strong>Given name:</strong> {item.resource.name[0].given[0]} <br/>
             <strong>Family name:</strong> {item.resource.name[0].family} <br/>
             <strong>Birthdate:</strong> {item.resource.birthDate.toLocaleString('tr-TR', { year: 'numeric', month: '2-digit', day: '2-digit' })} <br/>  
             <strong>Gender:</strong> {item.resource.gender.charAt(0).toUpperCase() + item.resource.gender.slice(1)} <br/>
             <strong>Email adress:</strong> <a href={item.resource.telecom[1].value}>{item.resource.telecom[1].value}</a> <br/>
             <strong>Phone number:</strong> <a href="tel:{item.resource.telecom[0].value}">{item.resource.telecom[0].value}</a> <br/>
-          </Text>}
+            </Text>
+        }
         keyExtractor={item => item.resource.id}
       />
     </View>
@@ -93,9 +94,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   display: {
-    paddingTop: '30px',
+    paddingTop: '10px',
     marginLeft: '20px',
-    marginBottom: '15px'
+    marginBottom: '15px',
+    fontSize: '11px'
   },
   bottom: {
     padding: '8px',
@@ -114,7 +116,4 @@ const styles = StyleSheet.create({
   }
 });
 
-let inputAndroid = {
-  width: '150px',
-}
 export default App;
