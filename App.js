@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, FlatList } from 'react-native';
 import React, { useState } from 'react';
 import { Searchbar } from 'react-native-paper';
 import RNPickerSelect from 'react-native-picker-select';
+import './style.css'
 
 function App() {  
   const [input, setInput] = useState("");
@@ -39,6 +40,8 @@ function App() {
             label: 'Select a filter below:',
             value: ''
           }}
+          useNativeAndroidPickerStyle={false}
+          style={{ inputAndroid }}
       />
       <Text style={styles.display}>Enter your search word below</Text>
       <Searchbar 
@@ -76,18 +79,15 @@ function App() {
 
 const styles = StyleSheet.create({
   header: {
-    marginTop: '30px',
+    marginTop: '20px',
     fontSize: '30px',
     fontWeight: '900',
     padding: '10px',
-    border: '1px black solid',
-    borderRadius: '5px',
-    color: 'yellow',
-    backgroundColor: 'black'
+    textAlign: 'center'
   },
   container: {
     flex: 1,
-    backgroundColor: 'lightblue',
+    backgroundColor: 'lightgrey',
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -98,7 +98,10 @@ const styles = StyleSheet.create({
     padding: '10px',
     fontSize: '12px',
     marginLeft: '20px'
-  }
+  },
 });
 
+let inputAndroid = {
+  width: '150px',
+}
 export default App;
