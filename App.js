@@ -1,8 +1,9 @@
 // import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Searchbar } from 'react-native-paper';
 import RNPickerSelect from 'react-native-picker-select';
+import FetchData from './Components/fetchData';
 import './style.css';
 
 function App() {  
@@ -10,15 +11,17 @@ function App() {
   const [results, setResults] = useState([]);
   const [query, setQuery] = useState("");
 
-  const fetchData = async (text) => {
-    const response = await fetch(`https://fhir.imagerad.com/dummy/Patient/?${query}=${text}`);
-    response
-      .json()
-      .then(data=> {
-        setResults(data.entry);
-      })
-      .catch((error)=> console.log(error.message))
-  };
+  
+  const getData = async (query, input) => {
+    let dataSet = [];
+    dataSet = await FetchData(query, input)
+    console.log(dataSet)
+    setResults(dataSet) 
+  }
+
+  useEffect(() => {
+    getData(query, input)
+  }, [query, input])
 
   return (
     <View style={styles.container}>
@@ -46,7 +49,7 @@ function App() {
         placeholder="Search"
         onChangeText={(text)=>{
           setInput(text);
-          fetchData(text)
+          FetchData(query, text)
         }}
         value={input}
         style={{maxWidth: '250px', height: '30px'}}
