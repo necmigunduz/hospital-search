@@ -59,7 +59,7 @@ function App() {
       />
       <SearchExplanation />
       <ResultHeader />
-      {!input ? (<Text>Make an entry into searchbar...</Text>) : !results ? (<Text style={styles.noresults}>No results found!</Text>) :       
+      {!input ? (<Text style={styles.noresults}>Make an entry into searchbar...</Text>) : !results ? (<Text style={styles.noresults}>No results found!</Text>) :       
       (<FlatList
         data={results}
         renderItem={({item}) =>   
