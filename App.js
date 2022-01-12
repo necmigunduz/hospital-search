@@ -4,13 +4,13 @@ import React, { useState, useEffect } from 'react';
 import { Searchbar } from 'react-native-paper';
 import RNPickerSelect from 'react-native-picker-select';
 import FetchData from './Components/fetchData';
+import Logo from './Components/logo'
 import './style.css';
 
 function App() {  
   const [input, setInput] = useState("");
   const [results, setResults] = useState([]);
   const [query, setQuery] = useState("");
-
   
   const getData = async (query, input) => {
     let dataSet = [];
@@ -25,7 +25,7 @@ function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.logo}>PS</Text>
+      <Logo />
       <Text style={styles.header}>PATIENT SEARCH</Text>
       <RNPickerSelect
           onValueChange={(value) => {
