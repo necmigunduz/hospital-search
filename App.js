@@ -59,7 +59,7 @@ function App() {
           <br/>--- abc = any records that match with “abc” exactly.
       </Text>
       <Text style={styles.display}><strong>Patients' List</strong></Text>
-      {!results ? (<Text>No results found!</Text>) :       
+      {!results ? (<Text style={styles.noresults}>No results found!</Text>) :       
       (<FlatList
         data={results}
         renderItem={({item}) =>   
@@ -95,19 +95,26 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   display: {
-    paddingTop: '10px',
+    marginTop: '10px',
     marginLeft: '20px',
     marginBottom: '15px',
     fontSize: '11px'
   },
+  noresults: {
+    marginTop: '10px',
+    marginLeft: '20px',
+    marginBottom: '15px',
+    fontSize: '11px',
+    height: '250px'
+  },
   bottom: {
-    padding: '8px',
+    margin: '8px',
     fontSize: '11px',
     marginLeft: '20px'
   },
   logo: {
     fontSize: '50px',
-    marginTop: '70px',
+    marginTop: '20px',
     border: '1px solid black',
     backgroundColor: 'black',
     color: 'white',

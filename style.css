@@ -2,7 +2,7 @@ select {
     width: 185px;
     height: 35px;
     font-size: 12px;
-    margin: 0 auto;
+    margin: 10px auto;
     border-radius: 20px;
     text-align: center;
 }
@@ -11,9 +11,9 @@ body {
     width: 360px;
     height: 740px;
     margin: 0 auto;
+    display: flex;
 }
 
 root {
     border: 5px solid black;
-    margin-top: 50px;
 }
