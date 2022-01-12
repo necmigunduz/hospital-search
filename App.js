@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, FlatList } from 'react-native';
 import React, { useState } from 'react';
 import { Searchbar } from 'react-native-paper';
 import RNPickerSelect from 'react-native-picker-select';
-import './style.css'
+import './style.css';
 
 function App() {  
   const [input, setInput] = useState("");
@@ -23,8 +23,8 @@ function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>PATIENT SEARCH CONSOLE</Text>
-      <Text style={styles.display}>Select one of the filters in the options to search for (a) patient(s).</Text>
+      <Text style={styles.logo}>PS</Text>
+      <Text style={styles.header}>PATIENT SEARCH</Text>
       <RNPickerSelect
           onValueChange={(value) => {
             console.log(value)
@@ -37,7 +37,7 @@ function App() {
               { label: 'National-Id', value: 'nationalid' },
           ]}
           placeholder={{
-            label: 'Select a filter below:',
+            label: 'Select a filter',
             value: ''
           }}
           useNativeAndroidPickerStyle={false}
@@ -79,26 +79,39 @@ function App() {
 
 const styles = StyleSheet.create({
   header: {
-    marginTop: '20px',
-    fontSize: '30px',
+    marginTop: '10px',
+    padding: '0px 50px',
+    fontSize: '25px',
     fontWeight: '900',
-    padding: '10px',
-    textAlign: 'center'
+    padding: '10px'
   },
   container: {
     flex: 1,
-    backgroundColor: 'lightgrey',
+    border: '10px solid black',
+    borderRadius: '20px',
     alignItems: 'center',
     justifyContent: 'center'
   },
   display: {
-    padding: '20px'
+    paddingTop: '30px',
+    marginLeft: '20px',
+    marginBottom: '15px'
   },
   bottom: {
-    padding: '10px',
-    fontSize: '12px',
+    padding: '8px',
+    fontSize: '11px',
     marginLeft: '20px'
   },
+  logo: {
+    fontSize: '50px',
+    marginTop: '70px',
+    border: '1px solid black',
+    backgroundColor: 'black',
+    color: 'white',
+    padding: '20px',
+    borderRadius: '15px',
+    fontWeight: '900'
+  }
 });
 
 let inputAndroid = {
