@@ -49,6 +49,7 @@ function App() {
           fetchData(text)
         }}
         value={input}
+        style={{maxWidth: '250px', height: '30px'}}
       />
       <Text style={styles.bottom}>
         <strong>Important note:</strong>You can also use asterisk (*) symbol during search, cases are like down below and the
@@ -63,7 +64,7 @@ function App() {
       (<FlatList
         data={results}
         renderItem={({item}) =>   
-            <Text style={styles.display}>
+            <Text style={styles.displayResult}>
             <strong>Given name:</strong> {item.resource.name[0].given[0]} <br/>
             <strong>Family name:</strong> {item.resource.name[0].family} <br/>
             <strong>Birthdate:</strong> {item.resource.birthDate.toLocaleString('tr-TR', { year: 'numeric', month: '2-digit', day: '2-digit' })} <br/>  
@@ -90,22 +91,32 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     border: '10px solid black',
+    backgroundColor: 'lightblue',
     borderRadius: '20px',
     alignItems: 'center',
     justifyContent: 'center'
   },
   display: {
-    marginTop: '10px',
-    marginLeft: '20px',
+    marginTop: '3px',
+    margin: '0 auto', 
     marginBottom: '15px',
-    fontSize: '11px'
+    fontSize: '12px',
+    borderBottomWidth: '1px'
+  },
+  displayResult: {
+    marginTop: '3px',
+    margin: '0 auto', 
+    marginBottom: '15px',
+    fontSize: '11px',
+    backgroundColor: 'lightgrey'
   },
   noresults: {
     marginTop: '10px',
-    marginLeft: '20px',
     marginBottom: '15px',
     fontSize: '11px',
-    height: '250px'
+    height: '250px',
+    fontWeight: '600',
+    fontSize: '20px'
   },
   bottom: {
     margin: '8px',
