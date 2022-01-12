@@ -53,14 +53,14 @@ function App() {
       <Text style={styles.bottom}>
         <strong>Important note:</strong>You can also use asterisk (*) symbol during search, cases are like down below and the
           application should satisfy these cases:
-          <br/>--- *abc --> any records that end with “abc”,
-          <br/>--- abc* --> any records that start with “abc”,
-          <br/>--- *abc* --> any records that contain “abc” in it,
-          <br/>--- abc --> any records that match with “abc” exactly.
+          <br/>--- *abc = any records that end with “abc”,
+          <br/>--- abc* = any records that start with “abc”,
+          <br/>--- *abc* = any records that contain “abc” in it,
+          <br/>--- abc = any records that match with “abc” exactly.
       </Text>
-      {console.log(results)}
       <Text style={styles.display}><strong>Patients' List</strong></Text>
-      <FlatList
+      {!results ? (<Text>No results found!</Text>) :       
+      (<FlatList
         data={results}
         renderItem={({item}) =>   
             <Text style={styles.display}>
@@ -73,7 +73,8 @@ function App() {
             </Text>
         }
         keyExtractor={item => item.resource.id}
-      />
+      />)}
+
     </View>
   );
 }
