@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    border: '10px solid black',
+    border: '10px solid #5F9EA0',
     backgroundColor: 'lightblue',
     borderRadius: '20px',
     alignItems: 'center',
