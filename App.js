@@ -1,84 +1,44 @@
-// import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, FlatList, AppRegistry } from 'react-native';
+import { StyleSheet, Text, View, AppRegistry } from 'react-native';
 import React, { useState, useEffect } from 'react';
-import { Searchbar } from 'react-native-paper';
-import RNPickerSelect from 'react-native-picker-select';
-import FetchData from './Components/fetchData';
 import Logo from './Components/logo'
 import SearchText from './Components/searchText';
 import SearchExplanation from './Components/searchExplanation';
 import ResultHeader from './Components/resultHeader';
 import Header from './Components/header';
+import Select from './Components/select';
+import Search from './Components/search';
+import ResultDisplay from './Components/resultDisplay';
 import './style.css';
 
 function App() {  
   const [input, setInput] = useState("");
   const [results, setResults] = useState([]);
   const [query, setQuery] = useState("");
+
+  const setQ = (value) => {
+    setQuery(value);
+  }
   
-  const getData = async (query, input) => {
-    let dataSet = [];
-    dataSet = await FetchData(query, input)
-    console.log(dataSet)
-    setResults(dataSet) 
+  const setI = (input) => {
+    setInput(input)
   }
 
-  useEffect(() => {
-    getData(query, input)
-  }, [query, input])
+  const setR = (results) => {
+    setResults(results)
+  }
 
   return (
     <View style={styles.container}>
       <Logo />
       <Header />
-      <RNPickerSelect
-          onValueChange={(value) => {
-            // console.log(value)
-            setQuery(value)
-          }}  
-          items={[
-              { label: 'Fullname', value: 'name' },
-              { label: 'Given name', value: 'given' },
-              { label: 'Family name', value: 'family' },
-              { label: 'National-Id', value: 'nationalid' },
-          ]}
-          placeholder={{
-            label: 'Select a filter',
-            value: ''
-          }}
-          useNativeAndroidPickerStyle={false}
-          style={{color: 'white'}}
-      />
+      <Select setValue={setQ}/>
       <SearchText />
-      <Searchbar 
-        placeholder="Search"
-        onChangeText={(text)=>{
-          setInput(text);
-          FetchData(query, text)
-        }}
-        value={input}
-        style={{maxWidth: '250px', height: '30px'}}
-      />
+      <Search setInput={setI} query={query} input={input} setRes={setR}/>
       <SearchExplanation />
       <ResultHeader />
       {!input ? (<Text style={styles.noresults}>Make an entry into searchbar...</Text>) : !results ? (<Text style={styles.noresults}>No results found!</Text>) :       
-      (<FlatList
-        data={results}
-        renderItem={({item}) =>   
-            <Text style={styles.displayResult}>
-            <strong>Given name:</strong> {item.resource.name[0].given[0]} <br/>
-            <strong>Family name:</strong> {item.resource.name[0].family} <br/>
-            <strong>Birthdate:</strong> {item.resource.birthDate.toLocaleString('tr-TR', { year: 'numeric', month: '2-digit', day: '2-digit' })} <br/>  
-            <strong>Gender:</strong> {item.resource.gender.charAt(0).toUpperCase() + item.resource.gender.slice(1)} <br/>
-            <strong>Email adress:</strong> <a href={item.resource.telecom[1].value}>{item.resource.telecom[1].value}</a> <br/>
-            <strong>Phone number:</strong> <a href="tel:{item.resource.telecom[0].value}">{item.resource.telecom[0].value}</a> <br/>
-            </Text>
-        }
-        keyExtractor={item => item.resource.id}
-      />)
+      (<ResultDisplay resultList={results}/>)
       } 
-
-
     </View>
   );
 }
@@ -91,13 +51,6 @@ const styles = StyleSheet.create({
     borderRadius: '20px',
     alignItems: 'center',
     justifyContent: 'center'
-  },
-  displayResult: {
-    marginTop: '3px',
-    margin: '0 auto', 
-    marginBottom: '15px',
-    fontSize: '11px',
-    backgroundColor: 'lightgrey'
   },
   noresults: {
     marginTop: '10px',
