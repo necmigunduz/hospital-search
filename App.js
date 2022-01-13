@@ -8,7 +8,7 @@ import Header from './Components/header';
 import Select from './Components/select';
 import Search from './Components/search';
 import ResultDisplay from './Components/resultDisplay';
-import './style.css';
+import './assets/style.css';
 
 function App() {  
   const [input, setInput] = useState("");
